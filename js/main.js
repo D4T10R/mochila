@@ -5,15 +5,13 @@ const itens = []
 formulario.addEventListener('submit', (evento) => {
     evento.preventDefault()
 
-    console.log(evento.target)
+    const nome = evento.target.elements['nome']
+    const quantidade = evento.target.elements['quantidade']
 
-    let nome = evento.target.elements['nome'].value
-    let quantidade = evento.target.elements['quantidade'].value
+    criaElemento(nome.value, quantidade.value)
 
-    criaElemento(nome, quantidade)
-
-    nome = ""
-    quantidade = ""
+    nome.value = ""
+    quantidade.value = ""
 })
 
 
@@ -38,5 +36,5 @@ function criaElemento(nome, quantidade) {
 
     itens.push(itensAtuais)
 
-    localStorage.setItem("item", JSON.stringify(itensAtuais))
+    localStorage.setItem("item", JSON.stringify(itens))
 }
